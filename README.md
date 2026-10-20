@@ -55,4 +55,8 @@ Ce resultat sert de point de depart pour comparer avec le DQN plus tard.
 jupyter lab
 ```
 
-Le notebook DQN sera ajoute a la prochaine etape.
+Ouvrir `dqn.ipynb` et executer les cellules dans l'ordre.
+Il contient les parametres, le test de l'agent aleatoire et le graphique des scores.
+
+Sur 100 episodes avec la graine 42, le score moyen est de -193.03.
+La prochaine etape est d'ajouter le reseau DQN et le replay buffer.
