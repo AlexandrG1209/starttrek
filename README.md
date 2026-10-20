@@ -59,4 +59,6 @@ Ouvrir `dqn.ipynb` et executer les cellules dans l'ordre.
 Il contient les parametres, le test de l'agent aleatoire et le graphique des scores.
 
 Sur 100 episodes avec la graine 42, le score moyen est de -193.03.
-La prochaine etape est d'ajouter le reseau DQN et le replay buffer.
+Le reseau DQN est ajoute : deux couches de 64 neurones, avec une valeur en sortie par action.
+Une cellule verifie la taille de la sortie et affiche l'action avec la plus grande valeur.
+Le reseau n'est pas encore entraine. La prochaine etape est le replay buffer.
