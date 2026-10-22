@@ -61,4 +61,6 @@ Il contient les parametres, le test de l'agent aleatoire et le graphique des sco
 Sur 100 episodes avec la graine 42, le score moyen est de -193.03.
 Le reseau DQN est ajoute : deux couches de 64 neurones, avec une valeur en sortie par action.
 Une cellule verifie la taille de la sortie et affiche l'action avec la plus grande valeur.
-Le reseau n'est pas encore entraine. La prochaine etape est le replay buffer.
+Le replay buffer garde jusqu'a 100 000 experiences et renvoie des lots aleatoires de 64 experiences en tenseurs.
+Le notebook verifie aussi le remplacement des anciennes experiences quand la memoire est pleine.
+Le reseau n'est pas encore entraine. La prochaine etape est le choix des actions et l'apprentissage.
