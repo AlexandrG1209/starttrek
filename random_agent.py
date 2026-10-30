@@ -33,7 +33,7 @@ def main():
             done = False
 
             while not done:
-                # Pour l'instant, les actions sont au hasard pour avoir un score de depart.
+                # Random actions give us a score to compare with later.
                 action = env.action_space.sample()
                 state, reward, terminated, truncated, info = env.step(action)
                 total_reward += reward
