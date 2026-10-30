@@ -1,12 +1,12 @@
 # Start Trek
 
-Projet d'apprentissage par renforcement sur LunarLander-v3.
-Cette branche contient ma partie DQN.
+Reinforcement learning project on LunarLander-v3.
+This branch contains the DQN work.
 
-## Installation
+## Setup
 
-Commandes a lancer dans Ubuntu, depuis le dossier du projet.
-L'environnement a ete teste avec Python 3.14.
+Run these commands in Ubuntu, from the project folder.
+The environment was tested with Python 3.14.
 
 ```bash
 python3 -m venv .venv
@@ -16,53 +16,53 @@ python -m pip install torch==2.14.1 --index-url https://download.pytorch.org/whl
 python -m pip install --no-build-isolation -r requirements.txt
 ```
 
-SWIG sert a compiler Box2D. Il faut aussi un compilateur C++.
-L'option `--no-build-isolation` permet a Box2D d'utiliser SWIG deja installe.
-Si les outils manquent sur Ubuntu :
+SWIG builds Box2D, which also needs a C++ compiler.
+The `--no-build-isolation` option lets Box2D use the installed SWIG package.
+If the tools are missing on Ubuntu:
 
 ```bash
 sudo apt install python3-venv build-essential
 ```
 
-PyTorch est installe en version CPU pour commencer.
-Il faut reactiver `.venv` avec `source .venv/bin/activate` dans chaque nouveau terminal.
+We use the CPU version of PyTorch for now.
+Activate `.venv` with `source .venv/bin/activate` in each new terminal.
 
-## Tester le simulateur
+## Run the simulator
 
 ```bash
 python random_agent.py
 ```
 
-Une fenetre s'ouvre et le module choisit ses actions au hasard.
-Le script affiche le score et le nombre de pas de chaque episode.
-Il ne fait pas encore d'apprentissage.
+A window opens and the lander takes random actions.
+The script prints the score and number of steps for each episode.
+There is no learning in this script.
 
-Pour lancer plusieurs episodes sans ouvrir de fenetre :
+To run several episodes without a window:
 
 ```bash
 python random_agent.py --episodes 10 --no-render
 ```
 
-La graine vaut 42 par defaut. On peut la changer avec `--seed 10`.
-Elle fixe le depart du simulateur et le tirage des actions pour refaire le meme essai.
+The default seed is 42. Use `--seed 10` to change it.
+The seed fixes the starting state and random actions so we can repeat the test.
 
-Premier essai avec 10 episodes et la graine 42 : score moyen de -203.96.
-Ce resultat sert de point de depart pour comparer avec le DQN plus tard.
+The first test with 10 episodes and seed 42 gave a mean score of -203.96.
+This is a starting score to compare with the DQN later.
 
-## Notebooks
+## Notebook
 
 ```bash
 jupyter lab
 ```
 
-Ouvrir `dqn.ipynb` et executer les cellules dans l'ordre.
-Il contient les parametres, le test de l'agent aleatoire et le graphique des scores.
+Open `dqn.ipynb` and run the cells in order.
+It contains the settings, random agent test and score plot.
 
-Sur 100 episodes avec la graine 42, le score moyen est de -193.03.
-Le reseau DQN est ajoute : deux couches de 64 neurones, avec une valeur en sortie par action.
-Une cellule verifie la taille de la sortie et affiche l'action avec la plus grande valeur.
-Le replay buffer garde jusqu'a 100 000 experiences et renvoie des lots aleatoires de 64 experiences en tenseurs.
-Le notebook verifie aussi le remplacement des anciennes experiences quand la memoire est pleine.
-Le choix des actions utilise epsilon-greedy. Epsilon baisse de 1 a 0.05 sur 100 000 pas.
-Deux tests montrent les actions au hasard et le choix du reseau. Pour evaluer, on utilisera epsilon a 0.
-Le reseau n'est pas encore entraine. La prochaine etape est le reseau cible, puis le calcul de la perte.
+The mean random score over 100 episodes is -193.03 with seed 42.
+The DQN network has two hidden layers of 64 neurons and one output per action.
+A cell checks the output shape and shows the action with the highest value.
+The replay buffer keeps up to 100,000 experiences and samples batches of 64 as tensors.
+There is also a small test to check that old experiences are replaced when it is full.
+Action selection uses epsilon-greedy. Epsilon goes from 1 to 0.05 over 100,000 steps.
+The tests check random choices and network choices. Evaluation will use epsilon at 0.
+The network is not trained yet. Next we add the target network and calculate the loss.

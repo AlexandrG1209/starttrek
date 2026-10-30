@@ -5,23 +5,23 @@ import numpy as np
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Tester LunarLander avec des actions aleatoires")
+    parser = argparse.ArgumentParser(description="Run LunarLander with random actions")
     parser.add_argument("--episodes", type=int, default=1)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--no-render", action="store_true")
     args = parser.parse_args()
 
     if args.episodes < 1:
-        parser.error("Le nombre d'episodes doit etre positif")
+        parser.error("The number of episodes must be positive")
     if args.seed < 0:
-        parser.error("La graine doit etre positive ou nulle")
+        parser.error("The seed must be zero or positive")
 
     render_mode = None if args.no_render else "human"
     env = gym.make("LunarLander-v3", render_mode=render_mode)
     scores = []
 
-    print(f"Etat : {env.observation_space.shape[0]} valeurs")
-    print(f"Actions : {env.action_space.n}")
+    print(f"State size: {env.observation_space.shape[0]}")
+    print(f"Actions: {env.action_space.n}")
 
     try:
         for episode in range(args.episodes):
@@ -41,9 +41,9 @@ def main():
                 done = terminated or truncated
 
             scores.append(total_reward)
-            print(f"Episode {episode + 1} : score = {total_reward:.2f}, pas = {steps}")
+            print(f"Episode {episode + 1}: score = {total_reward:.2f}, steps = {steps}")
 
-        print(f"Score moyen : {np.mean(scores):.2f}")
+        print(f"Mean score: {np.mean(scores):.2f}")
     finally:
         env.close()
 
