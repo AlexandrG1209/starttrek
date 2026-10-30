@@ -63,4 +63,6 @@ Le reseau DQN est ajoute : deux couches de 64 neurones, avec une valeur en sorti
 Une cellule verifie la taille de la sortie et affiche l'action avec la plus grande valeur.
 Le replay buffer garde jusqu'a 100 000 experiences et renvoie des lots aleatoires de 64 experiences en tenseurs.
 Le notebook verifie aussi le remplacement des anciennes experiences quand la memoire est pleine.
-Le reseau n'est pas encore entraine. La prochaine etape est le choix des actions et l'apprentissage.
+Le choix des actions utilise epsilon-greedy. Epsilon baisse de 1 a 0.05 sur 100 000 pas.
+Deux tests montrent les actions au hasard et le choix du reseau. Pour evaluer, on utilisera epsilon a 0.
+Le reseau n'est pas encore entraine. La prochaine etape est le reseau cible, puis le calcul de la perte.
