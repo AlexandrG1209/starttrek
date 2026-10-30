@@ -67,4 +67,7 @@ Action selection uses epsilon-greedy. Epsilon goes from 1 to 0.05 over 100,000 s
 The tests check random choices and network choices. Evaluation will use epsilon at 0.
 The target network starts with the same weights as the main network and stays fixed between copies.
 It is set to copy the main weights every 1,000 learning updates. The notebook checks the copy and its timing.
-The network is not trained yet. Next we calculate the Bellman target and the MSE loss.
+The notebook now has a first training run of 20 episodes, with Bellman targets, MSE loss and Adam.
+It records scores, lengths, losses, epsilon and episode endings. The plots show the first training results.
+Trial weights are saved in `checkpoints/dqn_short_run.pt`. This folder is ignored by Git.
+This short run checks that learning works. Regular evaluation and a longer training run come next.
