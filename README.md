@@ -64,10 +64,14 @@ A cell checks the output shape and shows the action with the highest value.
 The replay buffer keeps up to 100,000 experiences and samples batches of 64 as tensors.
 There is also a small test to check that old experiences are replaced when it is full.
 Action selection uses epsilon-greedy. Epsilon goes from 1 to 0.05 over 100,000 steps.
-The tests check random choices and network choices. Evaluation will use epsilon at 0.
+The tests check random choices and network choices. Evaluation always takes the highest Q-value.
 The target network starts with the same weights as the main network and stays fixed between copies.
 It is set to copy the main weights every 1,000 learning updates. The notebook checks the copy and its timing.
 The notebook now has a first training run of 20 episodes, with Bellman targets, MSE loss and Adam.
 It records scores, lengths, losses, epsilon and episode endings. The plots show the first training results.
 Trial weights are saved in `checkpoints/dqn_short_run.pt`. This folder is ignored by Git.
-This short run checks that learning works. Regular evaluation and a longer training run come next.
+Every 5 training episodes, the model plays 5 evaluation episodes without random actions or learning.
+These tests use a separate environment with fixed seeds starting at 10,000.
+The best mean score saves the model in `checkpoints/dqn_best.pt`.
+The notebook reloads this model and checks its evaluation score.
+Both saved files are local trial models. A longer training run and the final 100-episode evaluation come next.
