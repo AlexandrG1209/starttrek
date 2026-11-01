@@ -28,7 +28,7 @@ python -m pip install --no-build-isolation -r requirements.txt
 
 ```bash
 python model.py dqn dqn_lunar_lander.pt
-python model.py ppo ppo_lunar_lander_stable_finetuned_best.pt
+python model.py ppo PPO/ppo_lunar_lander_stable_finetuned_best.pt
 ```
 
 A window opens and the script prints the score.
@@ -44,7 +44,7 @@ jupyter lab
 Select the `.venv` Python kernel and run the cells in order.
 
 - `dqn.ipynb`: DQN code, training and results.
-- `PPO.ipynb`: PPO code, training and fine-tuning.
+- `PPO/PPO.ipynb`: PPO code, training and fine-tuning.
 - `comparison.ipynb`: test both saved models without training.
 
 The DQN notebook loads saved training results by default.
