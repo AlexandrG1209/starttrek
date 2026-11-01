@@ -27,7 +27,7 @@ python -m pip install --no-build-isolation -r requirements.txt
 ## Run a model
 
 ```bash
-python model.py dqn dqn_lunar_lander.pt
+python model.py dqn DQN/dqn_lunar_lander.pt
 python model.py ppo PPO/ppo_lunar_lander_stable_finetuned_best.pt
 ```
 
@@ -43,7 +43,7 @@ jupyter lab
 
 Select the `.venv` Python kernel and run the cells in order.
 
-- `dqn.ipynb`: DQN code, training and results.
+- `DQN/dqn.ipynb`: DQN code, training and results.
 - `PPO/PPO.ipynb`: PPO code, training and fine-tuning.
 - `comparison.ipynb`: test both saved models without training.
 
@@ -70,5 +70,5 @@ The notebooks contain the full results and plots.
 
 - `model.py`: load a model and play with a window.
 - `random_agent.py`: test LunarLander with random actions.
-- `models/`: DQN weights from the training experiments.
-- `results/`: DQN training and evaluation logs.
+- `DQN/models/`: DQN weights from the training experiments.
+- `DQN/results/`: DQN training and evaluation logs.
